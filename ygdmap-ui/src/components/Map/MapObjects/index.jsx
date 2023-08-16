@@ -1,14 +1,17 @@
 import React, { useRef } from "react";
-import { ContainerMap } from "..";
-import { GeoSearch } from "components/Tools";
-import ToolBar from 'components/Tools/ToolBar';
+import { ContainerMap, MapTools } from "..";
+import { ToolBar } from 'components/Tools';
 
 function MapObjects() {
 
   return (
+    <>
     <ContainerMap >
-      <ToolBar/>
+      <MapTools/>
     </ContainerMap>
+    
+    <ToolBar/>
+    </>
   );
 }
 

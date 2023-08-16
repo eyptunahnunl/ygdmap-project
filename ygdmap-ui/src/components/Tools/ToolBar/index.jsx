@@ -1,13 +1,13 @@
-import { GeoSearch } from '..'
-import Measurment from '../Measurments'
+import UploadData from "../UploadData";
 
 function ToolBar() {
   return (
-    <div>
-      <GeoSearch/>
-      <Measurment/>
-    </div>
-  )
+    <>
+      <div className="right-1 w-72 realative absolute z-51 top-6">
+        <UploadData />
+      </div>
+    </>
+  );
 }
 
-export default ToolBar
+export default ToolBar;
