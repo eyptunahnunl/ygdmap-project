@@ -1,5 +1,11 @@
+import { MapObjects } from 'components/Map';
+
 function App() {
-  return <div>test</div>;
+  return (
+    <>
+      <MapObjects/>
+    </>
+  );
 }
 
 export default App;
