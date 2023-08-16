@@ -1,16 +1,15 @@
 import React, { useRef } from "react";
 import { ContainerMap, MapTools } from "..";
-import { ToolBar } from 'components/Tools';
+import { ToolBar } from "components/Tools";
 
 function MapObjects() {
-
   return (
     <>
-    <ContainerMap >
-      <MapTools/>
-    </ContainerMap>
-    
-    <ToolBar/>
+      <ContainerMap>
+        <MapTools />
+      </ContainerMap>
+
+      <ToolBar />
     </>
   );
 }
