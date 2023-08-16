@@ -66,15 +66,113 @@ const DefaultIcon = ({ size, color = "#206CC9" }) => {
 const TableIcon = ({ size, color = "#206CC9" }) => {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <mask id="path-1-inside-1_4_887" fill="white">
+        <rect
+          width="18"
+          height="18"
+          rx="0.5"
+          transform="matrix(-1 0 0 1 18 0)"
+        />
+      </mask>
+      <rect
+        width="18"
+        height="18"
+        rx="0.5"
+        transform="matrix(-1 0 0 1 18 0)"
+        stroke="#3DA0A8"
+        strokeWidth="2"
+        mask="url(#path-1-inside-1_4_887)"
+      />
       <path
-        d="M8.625 1.125C8.625 0.501562 8.12344 0 7.5 0C6.87656 0 6.375 0.501562 6.375 1.125V3H4.5C2.84531 3 1.5 4.34531 1.5 6V6.75V9V21C1.5 22.6547 2.84531 24 4.5 24H19.5C21.1547 24 22.5 22.6547 22.5 21V9V6.75V6C22.5 4.34531 21.1547 3 19.5 3H17.625V1.125C17.625 0.501562 17.1234 0 16.5 0C15.8766 0 15.375 0.501562 15.375 1.125V3H8.625V1.125ZM3.75 9H7.5V11.625H3.75V9ZM3.75 13.875H7.5V16.875H3.75V13.875ZM9.75 13.875H14.25V16.875H9.75V13.875ZM16.5 13.875H20.25V16.875H16.5V13.875ZM20.25 11.625H16.5V9H20.25V11.625ZM20.25 19.125V21C20.25 21.4125 19.9125 21.75 19.5 21.75H16.5V19.125H20.25ZM14.25 19.125V21.75H9.75V19.125H14.25ZM7.5 19.125V21.75H4.5C4.0875 21.75 3.75 21.4125 3.75 21V19.125H7.5ZM14.25 11.625H9.75V9H14.25V11.625Z"
-        fill="#3DA0A8"
+        d="M15.5 15.5H13.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M17.5 13.5H0.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M15.5 11.5H13.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M17.5 9.5H0.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M15.5 7.5H13.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M17.5 5.5H0.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M15.5 3.5H13.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M11.5 0.5V17.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M5.5 0.5V17.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M9.5 3.5H7.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M9.5 7.5H7.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M9.5 11.5H7.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M9.5 15.5H7.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M3.5 15.5H2.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M3.5 11.5H2.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M3.5 7.5H2.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
+      />
+      <path
+        d="M3.5 3.5H2.5"
+        stroke="#3DA0A8"
+        stroke-linecap="round"
       />
     </svg>
   );
