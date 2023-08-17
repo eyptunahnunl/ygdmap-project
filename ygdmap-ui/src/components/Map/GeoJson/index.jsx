@@ -1,34 +1,19 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  GeoJSON,
-  LayersControl,
-  Popup,
-} from "react-leaflet";
+import { GeoJSON, LayersControl, Popup } from "react-leaflet";
 import L from "leaflet";
-import LayersContext from 'context/LayerContext';
+import LayersContext from "context/LayerContext";
 function AddLayerGeoJson({ name, data, popup }) {
   //   const [popupValue, setPopupValue] = useState([]);
 
-  const [popupData, setPopupData] = useState([]);
-  const {
-    acitveFId,
-    setActiveFId,
-    layersData,
-    setActiveLayer,
-  } = useContext(LayersContext);
+  const [clickEvent, setClickEvent] = useState(false);
+  const { acitveFId, setActiveFId, layersData, setActiveLayer,clearStyle, setClearStyle } =
+    useContext(LayersContext);
 
-  
-  function popUp(f) {
-    var out = [];
-    console.log(f);
-    if (f.properties) {
-      for (var key in f.properties) {
-        out.push(key + ": " + f.properties[key]);
-      }
-      setPopupData(out);
-    }
-  }
-  const highlightFeature = e => {
+  const handler = () => {
+    setClickEvent(!clickEvent);
+  };
+
+  const highlightFeature = (e) => {
     var layer = e.target;
     layer.setStyle({
       weight: 1,
@@ -37,7 +22,7 @@ function AddLayerGeoJson({ name, data, popup }) {
     });
   };
 
-  const style = feature => {
+  const style = (feature) => {
     return {
       fillColor: null,
       weight: 3,
@@ -48,52 +33,77 @@ function AddLayerGeoJson({ name, data, popup }) {
       fillOpacity: 0.2,
     };
   };
-  const resetHighlight = e => {
-    e.target.setStyle(style(e.target.feature));
+
+  const resetHighlight = (e) => {
+    // e.target.setStyle(style(e.target.feature));
+    //  e.target.feature.reset(this)
+    // console.log("reset higlight", e.target);
+    this.refs.geojson.resetStyle(e.target);
   };
-  const activeFeatureHandle = e => {
+  const activeFeatureHandle = (e) => {
+    console.log(e);
     const filter = layersData.filter(
-      item => e.target.feature.layerID === item.layerID
+      (item) => e.target.feature.layerID === item.layerID
     );
+    // console.log("filter",filter)
     setActiveLayer(filter[0].data);
-    console.log("filterdata sfafsa ", filter[0].data);
-    console.log("fitre", e.target.feature.layerID);
-    setActiveFId(e.target.feature.F_ID);
+    setActiveFId(e.target.feature.properties.F_ID);
+
+    e.target.setStyle({
+      weight: 1,
+      color: "yellow",
+      fillOpacity: 0.4,
+    });
   };
 
-  function onEachFeature(feature, layer) {
-    layer.on({
-      mouseover: highlightFeature,
-      mouseout: resetHighlight,
-      click: activeFeatureHandle,
+  function styleChanged(e) {
+    e.sourceTarget.setStyle({
+      weight: 1,
+      color: "yellow",
+      fillOpacity: 0.4,
     });
+
+    console.log("click react", e);
   }
+  function resetStyledLayer(e){
+    
+     e.target.resetStyle()
+  }
+
+  // function onEachFeature(feature, layer) {
+  //   var defaultStyle = layer.style,
+  //     that = this; //NEW
+
+  //   layer.on("onclick", function (e) {
+  //     this.setStyle({
+  //       color: "#2262CC",
+  //       weight: 3,
+  //       opacity: 0.6,
+  //       fillOpacity: 0.65,
+  //       fillColor: "#2262CC",
+  //     });
+  //   });
+
+  // }
   function point(feature, latlng) {
     return L.circleMarker(latlng);
   }
   return (
-    <LayersControl.Overlay name={name} checked>
-      <GeoJSON
-        data={data}
-        eventHandlers={{
-          click: e => {
-            // console.log("event", e);
-            // e.sourceTarget.options.color = onselect;
-          },
-        }}
-        onEachFeature={onEachFeature}
-        pointToLayer={(a, b) => {
-          return point(a, b);
-        }}
-      >
-        {/* <Popup>
-          <div>
-            <div></div>
-            {getProperties(popup.properties)}
-          </div>
-        </Popup> */}
-      </GeoJSON>
-    </LayersControl.Overlay>
+    <>
+      <LayersControl.Overlay name={name} checked>
+        <GeoJSON
+          data={data}
+          eventHandlers={{
+            click: styleChanged,
+            dblclick:resetStyledLayer,
+      
+          }}
+          pointToLayer={(a, b) => {
+            return point(a, b);
+          }}
+        ></GeoJSON>
+      </LayersControl.Overlay>
+    </>
   );
 }
 

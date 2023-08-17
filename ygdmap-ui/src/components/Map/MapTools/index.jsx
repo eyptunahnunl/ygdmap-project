@@ -1,6 +1,6 @@
 import { GeoSearch, Measurment } from 'components/Tools'
 import LayersContext from 'context/LayerContext';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { AddLayerGeoJson, LayerItems } from '..';
 
 function MapTools() {
@@ -21,6 +21,7 @@ function MapTools() {
               />
             );
           })}
+       
         </LayerItems>
     </>
   )

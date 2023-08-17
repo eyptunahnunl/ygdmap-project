@@ -8,6 +8,9 @@ import { UploadData } from 'components/Tools';
 
 function DataEntry() {
 
+  useEffect(()=>{
+    console.log("render dataentry")
+  })
 
   return (
     <div className="absolute top-6  border-2 z-20 w-86 bg-white m-3 ">

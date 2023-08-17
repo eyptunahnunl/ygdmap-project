@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const UIControlContext = createContext({});
 
 export const UIControlProvider = ({ children }) => {
-  const [dataEntry, setDataEntry] = useState(false);
+  const [dataEntry, setDataEntry] = useState(true);
   const [locationAnalysis, setLocationAnalysis] =
     useState(false);
   const [attributeTable, setAttributeTable] =

@@ -11,6 +11,10 @@ function UploadData() {
   const [layerID, setLayerID] = useState(0);
 
  function handleFile(file){
+  if (!(file.name.slice(-3) == "zip" || file.name.slice(-4) == "json")) {
+    return console.log("olmadı");
+  }
+
   if (file.name?.slice(-3) == "zip") {
     return handleZipFile(file);
   }
@@ -45,11 +49,13 @@ function UploadData() {
       : data[0];
 
   json.features.forEach((feature, index) => {
-    feature.F_ID = index;
+    feature.properties["F_ID"] = index + 1;
+
     feature.layerID = layerID;
   });
 
-  console.log("jsontype", json);
+
+ 
   
 
   const geoJsonLayer = {
@@ -84,10 +90,10 @@ function handleZipFile(file) {
 
 useEffect(() => {
   shp(shapeFileData).then(function (data) {
-    console.log("json add json file  ");
     setLayerID(layerID + 1);
     data.features.forEach((feature, index) => {
-      feature.F_ID = index;
+      // feature.F_ID = index;
+      feature.properties["F_ID"] = index;
       feature.layerID = layerID;
     });
     const newShapeFile = {

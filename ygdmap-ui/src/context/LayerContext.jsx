@@ -7,6 +7,10 @@ export const LayersProvider = ({ children }) => {
   const [activeLayer, setActiveLayer] = useState([]);
   const [activeFId, setActiveFId] = useState();
 
+
+
+  const [clearStyle, setClearStyle] = useState();
+
   const addLayer = newLayer => {
     setLayersData(prevLayers => [...prevLayers, newLayer]);
   };
@@ -18,6 +22,9 @@ export const LayersProvider = ({ children }) => {
     setActiveLayer,
     activeFId,
     setActiveFId,
+    clearStyle, setClearStyle
+
+
   };
 
   return (
