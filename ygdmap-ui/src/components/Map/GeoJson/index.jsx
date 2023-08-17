@@ -5,13 +5,11 @@ import LayersContext from "context/LayerContext";
 function AddLayerGeoJson({ name, data, popup }) {
   //   const [popupValue, setPopupValue] = useState([]);
 
-  const [clickEvent, setClickEvent] = useState(false);
-  const { acitveFId, setActiveFId, layersData, setActiveLayer,clearStyle, setClearStyle } =
+  const [resetStyle, setResetStyle] = useState();
+  const { acitveFId, setActiveFId, layersData, setActiveLayer,clearStyle, setClearStyle,activeLayerID, setActiveLayerID } =
     useContext(LayersContext);
 
-  const handler = () => {
-    setClickEvent(!clickEvent);
-  };
+
 
   const highlightFeature = (e) => {
     var layer = e.target;
@@ -62,11 +60,11 @@ function AddLayerGeoJson({ name, data, popup }) {
       color: "yellow",
       fillOpacity: 0.4,
     });
-
-    console.log("click react", e);
+    setActiveLayerID(e.layer.feature.layerID)
+    console.log(e)
   }
+ 
   function resetStyledLayer(e){
-    
      e.target.resetStyle()
   }
 

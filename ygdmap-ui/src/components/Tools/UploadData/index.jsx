@@ -6,7 +6,7 @@ import shp from "shpjs";
 
 function UploadData() {
   const [shapeFileData, setShapeFileData] = useState();
-  const { addLayer, setActiveLayer } =
+  const { addLayer, setActiveLayer,setActiveLayerID } =
     useContext(LayersContext);
   const [layerID, setLayerID] = useState(0);
 
@@ -54,16 +54,13 @@ function UploadData() {
     feature.layerID = layerID;
   });
 
-
- 
-  
-
   const geoJsonLayer = {
     name: name,
     data: json,
     layerID: layerID,
   };
 
+  setActiveLayerID(json.features[0].layerID)
   setActiveLayer(json);
   addLayer(geoJsonLayer);
 }
@@ -102,7 +99,7 @@ useEffect(() => {
       layerID: layerID,
     };
     setActiveLayer(data);
-
+    setActiveLayerID(data.features[0].layerID)
     addLayer(newShapeFile);
     // geo.addData(data);
   });
