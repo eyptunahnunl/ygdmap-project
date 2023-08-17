@@ -1,12 +1,33 @@
 import { useEffect } from "react";
-
+import Tabs from "@mui/joy/Tabs";
+import TabList from "@mui/joy/TabList";
+import Tab from "@mui/joy/Tab";
+import TabPanel from "@mui/joy/TabPanel";
 function DataEntry() {
   useEffect(() => {
     console.log("render data entry");
   }, []);
   return (
-    <div className="absolute top-6 z-20 w-72 bg-white m-3">
-      DataEntry
+    <div className="absolute top-6  border-2 z-20 w-86 bg-white m-3 ">
+      <Tabs aria-label="Basic tabs" defaultValue={0}>
+        <TabList>
+          <Tab>Load File</Tab>
+          <Tab>WMS</Tab>
+          <Tab>Raster</Tab>
+        </TabList>
+        <TabPanel value={0}>
+          <div>
+            <input type="file" />
+            <span>load geojson or Shpafile (.zip) </span>
+          </div>
+        </TabPanel>
+        <TabPanel value={1}>
+          <b>Second</b> tab panel
+        </TabPanel>
+        <TabPanel value={2}>
+          <b>Third</b> tab panel
+        </TabPanel>
+      </Tabs>
     </div>
   );
 }

@@ -92,87 +92,87 @@ const TableIcon = ({ size, color = "#206CC9" }) => {
       <path
         d="M15.5 15.5H13.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M17.5 13.5H0.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M15.5 11.5H13.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M17.5 9.5H0.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M15.5 7.5H13.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M17.5 5.5H0.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M15.5 3.5H13.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M11.5 0.5V17.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M5.5 0.5V17.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M9.5 3.5H7.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M9.5 7.5H7.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M9.5 11.5H7.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M9.5 15.5H7.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M3.5 15.5H2.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M3.5 11.5H2.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M3.5 7.5H2.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <path
         d="M3.5 3.5H2.5"
         stroke="#3DA0A8"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
     </svg>
   );

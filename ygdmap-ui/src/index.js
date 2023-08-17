@@ -8,13 +8,16 @@ import "leaflet-control-geocoder/dist/Control.Geocoder.js";
 import UIControlContext, {
   UIControlProvider,
 } from "context/UIControl";
+import { LayersProvider } from "context/LayerContext";
 const root = ReactDOM.createRoot(
   document.getElementById("root")
 );
 root.render(
   <>
     <UIControlProvider>
-      <App />
+      <LayersProvider>
+        <App />
+      </LayersProvider>
     </UIControlProvider>
   </>
 );
