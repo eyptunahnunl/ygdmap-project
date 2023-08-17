@@ -16,6 +16,8 @@ function AddLayerGeoJson({ name, data, popup }) {
     layersData,
     setActiveLayer,
   } = useContext(LayersContext);
+
+  
   function popUp(f) {
     var out = [];
     console.log(f);
