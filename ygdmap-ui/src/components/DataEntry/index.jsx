@@ -3,14 +3,13 @@ import Tabs from "@mui/joy/Tabs";
 import TabList from "@mui/joy/TabList";
 import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
-import LayersContext from 'context/LayerContext';
-import { UploadData } from 'components/Tools';
+import LayersContext from "context/LayerContext";
+import { LoadTIFF, UploadData } from "components/Tools";
 
 function DataEntry() {
-
-  useEffect(()=>{
-    console.log("render dataentry")
-  })
+  useEffect(() => {
+    console.log("render dataentry");
+  });
 
   return (
     <div className="absolute top-6  border-2 z-20 w-86 bg-white m-3 ">
@@ -21,13 +20,13 @@ function DataEntry() {
           <Tab>Raster</Tab>
         </TabList>
         <TabPanel value={0}>
-            <UploadData/>
+          <UploadData />
         </TabPanel>
         <TabPanel value={1}>
           <b>Second</b> tab panel
         </TabPanel>
         <TabPanel value={2}>
-          <b>Third</b> tab panel
+          <LoadTIFF />
         </TabPanel>
       </Tabs>
     </div>
