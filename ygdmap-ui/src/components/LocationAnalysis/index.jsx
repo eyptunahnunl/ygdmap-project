@@ -24,23 +24,14 @@ function LocationAnalysis() {
   const serviceEntegration = async () => {
     if (Object.keys(poligon).length > 0 && Object.keys(secondData).length > 0) {
       const serviceData = {
-        poligon: poligon,
+        polygon: poligon,
         points: secondData
       }
-      console.log("serviceData",serviceData)
-      
       try {
-        const response = await axios.post('http://localhost:8080/api/data', serviceData);
-        
-        console.log(response)
-        // API yanıtını state'e kaydedin
-        // setServiceData(response.data);
+        const response = await axios.post('http://localhost:8080/api/data', serviceData);       
       } catch (error) {
         console.error('API isteği sırasında bir hata oluştu:', error);
       }
-      
-      // setServiceData(serviceData)
-  
     }
   };
   return (
@@ -102,7 +93,7 @@ function LocationAnalysis() {
 
       <Box>
         <Button onClick={serviceEntegration} size="large">
-          Large
+          Submit
         </Button>
       </Box>
     </div>
