@@ -1,17 +1,27 @@
 import { useContext, useEffect, useState } from "react";
-import { GeoJSON, LayersControl, Popup } from "react-leaflet";
+import {
+  GeoJSON,
+  LayersControl,
+  Popup,
+} from "react-leaflet";
 import L from "leaflet";
 import LayersContext from "context/LayerContext";
 function AddLayerGeoJson({ name, data, popup }) {
   //   const [popupValue, setPopupValue] = useState([]);
 
   const [resetStyle, setResetStyle] = useState();
-  const { acitveFId, setActiveFId, layersData, setActiveLayer,clearStyle, setClearStyle,activeLayerID, setActiveLayerID } =
-    useContext(LayersContext);
+  const {
+    acitveFId,
+    setActiveFId,
+    layersData,
+    setActiveLayer,
+    clearStyle,
+    setClearStyle,
+    activeLayerID,
+    setActiveLayerID,
+  } = useContext(LayersContext);
 
-
-
-  const highlightFeature = (e) => {
+  const highlightFeature = e => {
     var layer = e.target;
     layer.setStyle({
       weight: 1,
@@ -20,7 +30,7 @@ function AddLayerGeoJson({ name, data, popup }) {
     });
   };
 
-  const style = (feature) => {
+  const style = feature => {
     return {
       fillColor: null,
       weight: 3,
@@ -32,16 +42,16 @@ function AddLayerGeoJson({ name, data, popup }) {
     };
   };
 
-  const resetHighlight = (e) => {
+  const resetHighlight = e => {
     // e.target.setStyle(style(e.target.feature));
     //  e.target.feature.reset(this)
     // console.log("reset higlight", e.target);
     this.refs.geojson.resetStyle(e.target);
   };
-  const activeFeatureHandle = (e) => {
+  const activeFeatureHandle = e => {
     console.log(e);
     const filter = layersData.filter(
-      (item) => e.target.feature.layerID === item.layerID
+      item => e.target.feature.layerID === item.layerID
     );
     // console.log("filter",filter)
     setActiveLayer(filter[0].data);
@@ -60,12 +70,12 @@ function AddLayerGeoJson({ name, data, popup }) {
       color: "yellow",
       fillOpacity: 0.4,
     });
-    setActiveLayerID(e.layer.feature.layerID)
-    console.log(e)
+    setActiveLayerID(e.layer.feature.layerID);
+    console.log(e);
   }
- 
-  function resetStyledLayer(e){
-     e.target.resetStyle()
+
+  function resetStyledLayer(e) {
+    e.target.resetStyle();
   }
 
   // function onEachFeature(feature, layer) {
@@ -93,8 +103,7 @@ function AddLayerGeoJson({ name, data, popup }) {
           data={data}
           eventHandlers={{
             click: styleChanged,
-            dblclick:resetStyledLayer,
-      
+            dblclick: resetStyledLayer,
           }}
           pointToLayer={(a, b) => {
             return point(a, b);

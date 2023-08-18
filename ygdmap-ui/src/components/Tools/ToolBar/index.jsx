@@ -24,7 +24,7 @@ function ToolBar() {
 
   return (
     <>
-      <div className="right-1 w-10 top-40  z-51 absolute flex-row  mt-0 overflow-hidden ">
+      <div className="right-1 w-10 top-56  z-51 absolute flex-row  mt-0 overflow-hidden ">
         <Button
           iconName="dataEntry"
           onClick={handleDataEntry}
