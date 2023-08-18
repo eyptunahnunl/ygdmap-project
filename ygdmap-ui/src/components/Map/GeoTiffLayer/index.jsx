@@ -24,7 +24,7 @@ function GeotiffLayer() {
             opacity: 0.7,
             resolution: 256,
           });
-          console.log("layer:", layer);
+
           layer.addTo(map);
 
           map.fitBounds(layer.getBounds());
