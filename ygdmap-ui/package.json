@@ -19,7 +19,6 @@
     "georaster-layer-for-leaflet": "^3.10.0",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^2.4.0",
-    "loam": "^1.2.0",
     "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

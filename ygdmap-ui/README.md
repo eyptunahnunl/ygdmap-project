@@ -1,15 +1,38 @@
-# YGDMap-UI
+## YGDMap Frontend Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies and Systems Used In This Project
 
-## Available Scripts
+- [React 18](https://github.com/facebook/react)
 
-In the project directory, you can run:
+- [Leaflet](https://leafletjs.com/) - Map Library
 
-### `npm start`
+- [ESLint](https://github.com/eslint/eslint) — To find bugs in your code according to specific rules
 
-### `npm test`
+- [react-leaflet](https://react-leaflet.js.org/) — react-leaflet is a third party leaflet library
 
-### `npm run build`
+- [Material UI](https://mui.com/) | [Tailwind Css](https://tailwindcss.com/) - Design System and CSS Library
 
-### `npm run eject`
+## To Begin
+
+### 1. Clone the Repo:
+
+```bash
+git clone https://github.com/eyptunahnunl/ygdmap-project.git
+cd ygdmap-ui
+```
+
+### 2. Install Dependencies:
+
+**npm** is suggested.
+
+```bash
+npm install
+```
+
+### 3. Run the Development Environment:
+
+```bash
+npm start
+```
+
+You can open up the [http://localhost:3000](http://localhost:3000) address on your browser to see the result.
