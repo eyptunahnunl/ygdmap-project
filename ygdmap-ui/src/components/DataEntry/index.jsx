@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import Tabs from "@mui/joy/Tabs";
 import TabList from "@mui/joy/TabList";
 import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
-import LayersContext from "context/LayerContext";
+
 import { LoadTIFF, UploadData } from "components/Tools";
 
 function DataEntry() {

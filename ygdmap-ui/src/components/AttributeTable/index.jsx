@@ -1,5 +1,5 @@
 import { DataGrid } from "@mui/x-data-grid";
-import clsx from "clsx";
+
 import LayersContext from "context/LayerContext";
 import { useContext, useEffect, useState } from "react";
 
@@ -14,12 +14,7 @@ function AttributeTable() {
   const [tableCol, setTableCol] = useState([]);
   const [tableRow, setTableRow] = useState([]);
 
-  const [value, setValue] = useState();
   const [selectedRows, setSelectedRows] = useState([2, 4]);
-
-  useEffect(() => {
-    setActiveFId([]); // veya setActiveFId([]) boş bir dizi olarak ayarlayabilirsiniz
-  }, [activeLayerID]);
 
   let layerPropertyNames = [];
 
@@ -34,7 +29,7 @@ function AttributeTable() {
           const { properties, layerID } = feature;
           return {
             layerID: layerID,
-            id: properties.F_ID,
+            id: properties.uniqueId,
             ...properties,
           };
         }
@@ -75,36 +70,10 @@ function AttributeTable() {
     setTableRow([...selectedRowData, ...newRows]); // Seçili satırlar en üste taşınmış veri kaynağı
   };
 
-  // const addSelection = newSelection => {
-  //   setSelectedRows(prevSelections => [
-  //     ...prevSelections,
-  //     newSelection,
-  //   ]);
-  // };
   const handleRowSelection = selection => {
-    // Önceki seçili satırları koruyarak yeni seçili satırları eklemek
-
-    console.log("selection", selection);
-    const newSelectedRows = [
-      ...selectedRows.filter(id => !selection.includes(id)),
-      ...selection,
-    ];
-
-    // console.log("selectionData", selectionData);
     setActiveFId(selection);
-
-    console.log("active layer", activeLayerID);
-
-    // setSelectedRows(selection);
-    // if (activeFId.includes(clickedFeatureId)) {
-    //   setActiveFId(
-    //     activeFId.filter(id => id !== clickedFeatureId)
-    //   );
-    // } else {
-    //   setActiveFId([...activeFId, clickedFeatureId]);
-    // }
   };
-  console.log("slectedrow", selectedRows);
+
   return (
     <div className="absolute bottom-0 z-20 w-full bg-white p-2 ">
       {layersData.length !== 0 ? (
@@ -125,12 +94,6 @@ function AttributeTable() {
             checkboxSelection
             pageSizeOptions={[5, 10]}
             onRowSelectionModelChange={handleRowSelection}
-            // onRowClick={handleRowSelection}
-            // isRowSelectable={e => console.log("seç", e)}
-            // onSortModelChange={model => console.log(model)}
-            // sortModel={sortModel}
-            // disableRowSelectionOnClick
-            // getCellClassName={params => selectedRow(params)}
           />
         </div>
       ) : (
