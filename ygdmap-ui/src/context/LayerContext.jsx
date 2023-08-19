@@ -5,7 +5,7 @@ const LayersContext = createContext({});
 export const LayersProvider = ({ children }) => {
   const [layersData, setLayersData] = useState([]);
   const [activeLayer, setActiveLayer] = useState([]);
-  const [activeFId, setActiveFId] = useState();
+  const [activeFId, setActiveFId] = useState([]);
   const [activeLayerID, setActiveLayerID] = useState();
   const [rasterLayer, setRasterLayer] = useState();
 

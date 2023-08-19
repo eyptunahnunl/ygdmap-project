@@ -4,19 +4,25 @@ import LayersContext from "context/LayerContext";
 import { useContext, useEffect, useState } from "react";
 
 function AttributeTable() {
-  const { activeLayerID, layersData } =
-    useContext(LayersContext);
+  const {
+    activeLayerID,
+    layersData,
+    setActiveFId,
+
+    activeFId,
+  } = useContext(LayersContext);
   const [tableCol, setTableCol] = useState([]);
   const [tableRow, setTableRow] = useState([]);
 
   const [value, setValue] = useState();
   const [selectedRows, setSelectedRows] = useState([2, 4]);
 
+  useEffect(() => {
+    setActiveFId([]); // veya setActiveFId([]) boş bir dizi olarak ayarlayabilirsiniz
+  }, [activeLayerID]);
+
   let layerPropertyNames = [];
 
-  useEffect(() => {
-    console.log("selectedRows", selectedRows);
-  }, []);
   useEffect(() => {
     if (layersData.length !== 0) {
       const activeLayer = layersData.filter(
@@ -61,10 +67,10 @@ function AttributeTable() {
 
   const moveSelectedRowsToTop = () => {
     const newRows = tableRow.filter(
-      row => !selectedRows.includes(row.id)
+      row => !activeFId.includes(row.id)
     ); // Seçili olmayan satırlar
     const selectedRowData = tableRow.filter(row =>
-      selectedRows.includes(row.id)
+      activeFId.includes(row.id)
     ); // Seçili satırlar
     setTableRow([...selectedRowData, ...newRows]); // Seçili satırlar en üste taşınmış veri kaynağı
   };
@@ -77,14 +83,26 @@ function AttributeTable() {
   // };
   const handleRowSelection = selection => {
     // Önceki seçili satırları koruyarak yeni seçili satırları eklemek
-    // const newSelectedRows = [
-    //   ...selectedRows.filter(
-    //     id => !deselection.includes(id)
-    //   ),
-    //   ...selection,
-    // ];
+
+    console.log("selection", selection);
+    const newSelectedRows = [
+      ...selectedRows.filter(id => !selection.includes(id)),
+      ...selection,
+    ];
+
+    // console.log("selectionData", selectionData);
+    setActiveFId(selection);
+
+    console.log("active layer", activeLayerID);
+
     // setSelectedRows(selection);
-    setSelectedRows(selection);
+    // if (activeFId.includes(clickedFeatureId)) {
+    //   setActiveFId(
+    //     activeFId.filter(id => id !== clickedFeatureId)
+    //   );
+    // } else {
+    //   setActiveFId([...activeFId, clickedFeatureId]);
+    // }
   };
   console.log("slectedrow", selectedRows);
   return (
@@ -103,12 +121,12 @@ function AttributeTable() {
                 paginationModel: { page: 0, pageSize: 5 }, // kaç row olacak bi sayfada
               },
             }}
-            rowSelectionModel={selectedRows}
-            isRowSelected={e => console.log(e)}
+            rowSelectionModel={activeFId}
             checkboxSelection
             pageSizeOptions={[5, 10]}
             onRowSelectionModelChange={handleRowSelection}
-
+            // onRowClick={handleRowSelection}
+            // isRowSelectable={e => console.log("seç", e)}
             // onSortModelChange={model => console.log(model)}
             // sortModel={sortModel}
             // disableRowSelectionOnClick

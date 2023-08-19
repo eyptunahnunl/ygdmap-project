@@ -6,13 +6,15 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import LayersContext from "context/LayerContext";
-function AddLayerGeoJson({ name, data, popup }) {
+
+function AddLayerGeoJson({ name, data, popup, color }) {
   //   const [popupValue, setPopupValue] = useState([]);
 
-  const [selectedIds, setSelectedIds] = useState([]);
+  // const [activeFId, setSelectedIds] = useState([]);
   const {
     setActiveFId,
     layersData,
+    activeFId,
     setActiveLayer,
     setActiveLayerID,
   } = useContext(LayersContext);
@@ -93,33 +95,34 @@ function AddLayerGeoJson({ name, data, popup }) {
   const handleOnClick = event => {
     const clickedFeatureId =
       event.layer.feature.properties.F_ID;
-
-    console.log("event", event.layer.feature);
+    const activeLayerId = event.layer.feature.layerID;
+    console.log("event", clickedFeatureId);
     // Seçilmişse kaldır, değilse ekle
-    if (selectedIds.includes(clickedFeatureId)) {
-      setSelectedIds(
-        selectedIds.filter(id => id !== clickedFeatureId)
+    if (activeFId.includes(clickedFeatureId)) {
+      setActiveFId(
+        activeFId.filter(id => id !== clickedFeatureId)
       );
     } else {
-      setSelectedIds([...selectedIds, clickedFeatureId]);
+      setActiveFId([...activeFId, clickedFeatureId]);
+      setActiveLayerID(activeLayerId);
     }
   };
 
   const featureStyle = feature => {
     return {
-      fillColor: selectedIds.includes(
-        feature.properties.F_ID
-      )
+      fillColor: activeFId.includes(feature.properties.F_ID)
         ? "yellow"
         : "blue", // Seçiliyse mavi, değilse yeşil
-      // Diğer stil özelliklerini buraya ekleyebilirsiniz
+      // Diğer stil özelliklerini buraya
+      // color: color[data.layerID],
     };
   };
+  console.log("color[data.layerID]", color[data.layerID]);
   function point(feature, latlng) {
     return L.circleMarker(latlng);
   }
 
-  console.log(selectedIds);
+  console.log(activeFId);
   return (
     <>
       <LayersControl.Overlay name={name} checked>

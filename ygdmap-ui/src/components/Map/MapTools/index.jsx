@@ -1,11 +1,29 @@
 import { GeoSearch, Measurment } from "components/Tools";
 import LayersContext from "context/LayerContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AddLayerGeoJson, LayerItems } from "..";
 import GeotiffLayer from "../GeoTiffLayer";
+import { getRandomColor } from "utils/mapOperations";
 
 function MapTools() {
   const { layersData } = useContext(LayersContext);
+  const [featureColors, setFeatureColors] = useState({});
+
+  console.log("layersData", layersData);
+  useEffect(() => {
+    if (layersData.length > 0) {
+      const colors = {};
+      layersData.data.forEach(geojson => {
+        if (!colors[geojson.layerID]) {
+          colors[geojson.layerID] = getRandomColor();
+        }
+      });
+      setFeatureColors(prevColors => ({
+        ...prevColors,
+        ...colors,
+      }));
+    }
+  }, []);
   return (
     <>
       <GeoSearch />
@@ -18,6 +36,7 @@ function MapTools() {
               name={item.name}
               data={item.data}
               popup={item.data.features}
+              color={featureColors}
             />
           );
         })}
