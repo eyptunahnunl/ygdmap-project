@@ -36,6 +36,7 @@ function LocationAnalysis() {
           "http://localhost:8080/api/data",
           serviceData
         );
+        console.log(response);
       } catch (error) {
         console.error(
           "API isteği sırasında bir hata oluştu:",

@@ -4,7 +4,11 @@ import TabList from "@mui/joy/TabList";
 import Tab from "@mui/joy/Tab";
 import TabPanel from "@mui/joy/TabPanel";
 
-import { LoadTIFF, UploadData } from "components/Tools";
+import {
+  LoadTIFF,
+  LoadWMS,
+  UploadData,
+} from "components/Tools";
 
 function DataEntry() {
   useEffect(() => {
@@ -23,7 +27,7 @@ function DataEntry() {
           <UploadData />
         </TabPanel>
         <TabPanel value={1}>
-          <b>Second</b> tab panel
+          <LoadWMS />
         </TabPanel>
         <TabPanel value={2}>
           <LoadTIFF />

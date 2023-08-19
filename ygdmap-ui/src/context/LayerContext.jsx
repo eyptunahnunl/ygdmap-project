@@ -8,14 +8,11 @@ export const LayersProvider = ({ children }) => {
   const [activeFId, setActiveFId] = useState([]);
   const [activeLayerID, setActiveLayerID] = useState();
   const [rasterLayer, setRasterLayer] = useState();
-  const [activeData, setActiveData] = useState([
-    {
-      layerID: 1,
-      featureId: [1, 2, 3, 4],
-    },
-  ]);
+  const [activeData, setActiveData] = useState([]);
 
   const [clearStyle, setClearStyle] = useState();
+
+  const [wmsLayer, setWmsLayer] = useState([]);
 
   const addLayer = newLayer => {
     setLayersData(prevLayers => [...prevLayers, newLayer]);
@@ -58,6 +55,10 @@ export const LayersProvider = ({ children }) => {
     return newDataList;
   };
 
+  const addWmsLayer = wms => {
+    setWmsLayer(item => [...item, wms]);
+  };
+
   const data = {
     layersData,
     setLayersData,
@@ -76,6 +77,9 @@ export const LayersProvider = ({ children }) => {
     addNewFeatureId,
     handleLayerChange,
     addFeatureIdsToLayer,
+    wmsLayer,
+    setWmsLayer,
+    addWmsLayer,
   };
 
   return (
