@@ -56,7 +56,13 @@ export const LayersProvider = ({ children }) => {
   };
 
   const addWmsLayer = wms => {
-    setWmsLayer(item => [...item, wms]);
+    const isLayerExists = wmsLayer.some(
+      layer => layer.name === wms.name
+    );
+
+    if (!isLayerExists) {
+      setWmsLayer(prevLayers => [...prevLayers, wms]);
+    }
   };
 
   const data = {

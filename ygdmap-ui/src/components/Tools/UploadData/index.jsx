@@ -10,14 +10,18 @@ function UploadData() {
     useContext(LayersContext);
   const [layerID, setLayerID] = useState(0);
 
+  const [fileExtention, setFileExtention] = useState("");
   function handleFile(file) {
+    if (file === undefined) {
+      return;
+    }
     if (
       !(
         file.name.slice(-3) == "zip" ||
         file.name.slice(-4) == "json"
       )
     ) {
-      return console.log("olmadı");
+      return setFileExtention("olmadı");
     }
 
     if (file.name?.slice(-3) == "zip") {
@@ -119,6 +123,9 @@ function UploadData() {
           onChange={e => handleFile(e.target.files[0])}
         />
         <span>load geojson or Shpafile (.zip) </span>
+        {fileExtention && (
+          <span>.json veya .zip yüklemediniz ! </span>
+        )}
       </div>
     </>
   );

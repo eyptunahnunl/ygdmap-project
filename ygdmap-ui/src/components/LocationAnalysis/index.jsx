@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Button } from "@mui/base";
+import { Button, Typography } from "@mui/material";
 import axios from "axios";
 function LocationAnalysis() {
   const { layersData } = useContext(LayersContext);
@@ -27,8 +27,8 @@ function LocationAnalysis() {
       Object.keys(secondData).length > 0
     ) {
       const serviceData = {
-        polygon: poligon,
         points: secondData,
+        polygon: poligon,
       };
       console.log("serviceData", serviceData);
       try {
@@ -46,8 +46,19 @@ function LocationAnalysis() {
     }
   };
   return (
-    <div className="absolute bottom-1/2 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
+    <div className="absolute bottom-1/3 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
       <Box sx={{ minWidth: 120 }}>
+        <Typography
+          variant="h8"
+          component="div"
+          sx={{
+            flexGrow: 1,
+            padding: 1,
+            textAlign: "center",
+          }}
+        >
+          Location Analysis Tool
+        </Typography>
         <FormControl fullWidth>
           <InputLabel
             id="demo-simple-select-label2"
@@ -110,10 +121,13 @@ function LocationAnalysis() {
             )}
           </Select>
         </FormControl>
-      </Box>
-
-      <Box>
-        <Button onClick={serviceEntegration} size="large">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "10px" }}
+          onClick={serviceEntegration}
+        >
           Submit
         </Button>
       </Box>

@@ -27,6 +27,7 @@ function MapTools() {
       }));
     }
   }, []);
+
   return (
     <>
       <GeoSearch />
@@ -45,7 +46,6 @@ function MapTools() {
         })}
       </LayerItems>
       <GeotiffLayer />
-      <LoadWMS />
     </>
   );
 }

@@ -2,6 +2,7 @@ import { DataGrid } from "@mui/x-data-grid";
 
 import LayersContext from "context/LayerContext";
 import { useContext, useEffect, useState } from "react";
+import { useMap } from "react-leaflet";
 
 function AttributeTable() {
   const {
@@ -14,7 +15,7 @@ function AttributeTable() {
   const [tableCol, setTableCol] = useState([]);
   const [tableRow, setTableRow] = useState([]);
 
-  const [selectedRows, setSelectedRows] = useState([2, 4]);
+  // const map = useMap();
 
   let layerPropertyNames = [];
 
@@ -74,6 +75,11 @@ function AttributeTable() {
     setActiveFId(selection);
   };
 
+  const zoomTodubleClick = event => {
+    console.log("cel", event.id);
+    // console.log(layersData[0].data.features.filter());
+    // layersData.filter( data => data.feat )
+  };
   return (
     <div className="absolute bottom-0 z-20 w-full bg-white p-2 ">
       {layersData.length !== 0 ? (
@@ -94,6 +100,8 @@ function AttributeTable() {
             checkboxSelection
             pageSizeOptions={[5, 10]}
             onRowSelectionModelChange={handleRowSelection}
+            // onRowDoubleClick={zoomTodubleClick}
+            onCellClick={zoomTodubleClick}
           />
         </div>
       ) : (
