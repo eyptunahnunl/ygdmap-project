@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Tabs from "@mui/joy/Tabs";
 import TabList from "@mui/joy/TabList";
 import Tab from "@mui/joy/Tab";
@@ -11,15 +10,11 @@ import {
 } from "components/Tools";
 
 function DataEntry() {
-  useEffect(() => {
-    console.log("render dataentry");
-  });
-
   return (
     <div className="absolute top-6  border-2 z-20 w-86 bg-white m-3 ">
       <Tabs aria-label="Basic tabs" defaultValue={0}>
         <TabList>
-          <Tab>Load File</Tab>
+          <Tab>Load Vector File </Tab>
           <Tab>WMS</Tab>
           <Tab>Raster</Tab>
         </TabList>

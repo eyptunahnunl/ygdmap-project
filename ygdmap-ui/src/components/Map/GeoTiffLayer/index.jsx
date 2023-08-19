@@ -17,8 +17,6 @@ function GeotiffLayer() {
         var arrayBuffer = reader.result;
 
         parseGeoraster(arrayBuffer).then(georaster => {
-          console.log("georaster:", georaster);
-
           var layer = new GeoRasterLayer({
             georaster: georaster,
             opacity: 0.7,

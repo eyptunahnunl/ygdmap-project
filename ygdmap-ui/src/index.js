@@ -5,9 +5,7 @@ import App from "./App";
 import "leaflet/dist/leaflet.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.css";
 import "leaflet-control-geocoder/dist/Control.Geocoder.js";
-import UIControlContext, {
-  UIControlProvider,
-} from "context/UIControl";
+import { UIControlProvider } from "context/UIControl";
 import { LayersProvider } from "context/LayerContext";
 
 const root = ReactDOM.createRoot(

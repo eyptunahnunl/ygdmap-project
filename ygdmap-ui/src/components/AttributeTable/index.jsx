@@ -2,7 +2,6 @@ import { DataGrid } from "@mui/x-data-grid";
 
 import LayersContext from "context/LayerContext";
 import { useContext, useEffect, useState } from "react";
-import { useMap } from "react-leaflet";
 
 function AttributeTable() {
   const {
@@ -14,8 +13,6 @@ function AttributeTable() {
   } = useContext(LayersContext);
   const [tableCol, setTableCol] = useState([]);
   const [tableRow, setTableRow] = useState([]);
-
-  // const map = useMap();
 
   let layerPropertyNames = [];
 
@@ -81,7 +78,7 @@ function AttributeTable() {
     // layersData.filter( data => data.feat )
   };
   return (
-    <div className="absolute bottom-0 z-20 w-full bg-white p-2 ">
+    <div className="absolute bottom-0  z-20 w-full bg-white p-2 ">
       {layersData.length !== 0 ? (
         <div>
           <button onClick={moveSelectedRowsToTop}>
@@ -105,8 +102,8 @@ function AttributeTable() {
           />
         </div>
       ) : (
-        <div className="h-80 justify-center justify-items-center">
-          veri yok
+        <div className="h-80 justify-center justify-items-center text-center">
+          Lütfen Vector Tipinde Veri Ekleyiniz
         </div>
       )}
     </div>

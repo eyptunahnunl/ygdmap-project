@@ -18,43 +18,6 @@ export const LayersProvider = ({ children }) => {
     setLayersData(prevLayers => [...prevLayers, newLayer]);
   };
 
-  const addNewFeatureId = newFeatureId => {
-    setActiveData(prevData => ({
-      ...prevData,
-      featureId: [...prevData.featureId, newFeatureId],
-    }));
-  };
-
-  const handleLayerChange = (newLayerID, newFeatureIds) => {
-    const existingLayer = activeData.find(
-      item => item.layerID === newLayerID
-    );
-
-    if (!existingLayer) {
-      const newDataList = [
-        ...activeData,
-        {
-          layerID: newLayerID,
-          featureId: [...newFeatureIds],
-        },
-      ];
-      setActiveData(newDataList);
-    }
-  };
-
-  const addFeatureIdsToLayer = (layerID, newFeatureIds) => {
-    const newDataList = activeData.map(item => {
-      if (item.layerID === layerID) {
-        return {
-          ...item,
-          featureId: [...item.featureId, ...newFeatureIds],
-        };
-      }
-      return item;
-    });
-    return newDataList;
-  };
-
   const addWmsLayer = wms => {
     const isLayerExists = wmsLayer.some(
       layer => layer.name === wms.name
@@ -79,10 +42,6 @@ export const LayersProvider = ({ children }) => {
     setActiveLayerID,
     rasterLayer,
     setRasterLayer,
-
-    addNewFeatureId,
-    handleLayerChange,
-    addFeatureIdsToLayer,
     wmsLayer,
     setWmsLayer,
     addWmsLayer,
