@@ -6,31 +6,41 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/base";
-import axios from 'axios';
+import axios from "axios";
 function LocationAnalysis() {
   const { layersData } = useContext(LayersContext);
   const [poligon, setPoligon] = useState({});
   const [secondData, setSecondData] = useState({});
   // const [serviceData, setServiceData] = useState();
 
-  const handleChangePoligon = (event) => {
+  const handleChangePoligon = event => {
     setPoligon(event.target.value);
   };
 
-  const handleChangeSecondData = (event) => {
+  const handleChangeSecondData = event => {
     setSecondData(event.target.value);
   };
-  
+
   const serviceEntegration = async () => {
-    if (Object.keys(poligon).length > 0 && Object.keys(secondData).length > 0) {
+    if (
+      Object.keys(poligon).length > 0 &&
+      Object.keys(secondData).length > 0
+    ) {
       const serviceData = {
         polygon: poligon,
-        points: secondData
-      }
+        points: secondData,
+      };
+      console.log("serviceData", serviceData);
       try {
-        const response = await axios.post('http://localhost:8080/api/data', serviceData);       
+        const response = await axios.post(
+          "http://localhost:8080/api/data",
+          serviceData
+        );
       } catch (error) {
-        console.error('API isteği sırasında bir hata oluştu:', error);
+        console.error(
+          "API isteği sırasında bir hata oluştu:",
+          error
+        );
       }
     }
   };
@@ -38,7 +48,10 @@ function LocationAnalysis() {
     <div className="absolute bottom-1/2 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label2" className="mt-2">
+          <InputLabel
+            id="demo-simple-select-label2"
+            className="mt-2"
+          >
             Poligon Katman giriniz
           </InputLabel>
           <Select
@@ -47,7 +60,9 @@ function LocationAnalysis() {
             value={poligon}
             onChange={handleChangePoligon}
           >
-            <MenuItem value={poligon}>Select Layer...</MenuItem>
+            <MenuItem value={poligon}>
+              Select Layer...
+            </MenuItem>
 
             {layersData.length != 0 ? (
               layersData.map((item, index) => {
@@ -66,7 +81,10 @@ function LocationAnalysis() {
 
       <Box sx={{ minWidth: 120 }} className="mt-2">
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label" className="mt-2">
+          <InputLabel
+            id="demo-simple-select-label"
+            className="mt-2"
+          >
             ikinci katmanı seçiniz
           </InputLabel>
           <Select
@@ -75,7 +93,9 @@ function LocationAnalysis() {
             value={secondData}
             onChange={handleChangeSecondData}
           >
-            <MenuItem value={secondData}>Select Layer second...</MenuItem>
+            <MenuItem value={secondData}>
+              Select Layer second...
+            </MenuItem>
             {layersData.length != 0 ? (
               layersData.map((item, key) => {
                 return (
