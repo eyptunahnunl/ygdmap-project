@@ -9,15 +9,11 @@ import LayersContext from "context/LayerContext";
 function AddLayerGeoJson({ name, data, popup }) {
   //   const [popupValue, setPopupValue] = useState([]);
 
-  const [resetStyle, setResetStyle] = useState();
+  const [selectedIds, setSelectedIds] = useState([]);
   const {
-    acitveFId,
     setActiveFId,
     layersData,
     setActiveLayer,
-    clearStyle,
-    setClearStyle,
-    activeLayerID,
     setActiveLayerID,
   } = useContext(LayersContext);
 
@@ -93,21 +89,50 @@ function AddLayerGeoJson({ name, data, popup }) {
   //   });
 
   // }
+
+  const handleOnClick = event => {
+    const clickedFeatureId =
+      event.layer.feature.properties.F_ID;
+
+    console.log("event", event.layer.feature);
+    // Seçilmişse kaldır, değilse ekle
+    if (selectedIds.includes(clickedFeatureId)) {
+      setSelectedIds(
+        selectedIds.filter(id => id !== clickedFeatureId)
+      );
+    } else {
+      setSelectedIds([...selectedIds, clickedFeatureId]);
+    }
+  };
+
+  const featureStyle = feature => {
+    return {
+      fillColor: selectedIds.includes(
+        feature.properties.F_ID
+      )
+        ? "yellow"
+        : "blue", // Seçiliyse mavi, değilse yeşil
+      // Diğer stil özelliklerini buraya ekleyebilirsiniz
+    };
+  };
   function point(feature, latlng) {
     return L.circleMarker(latlng);
   }
+
+  console.log(selectedIds);
   return (
     <>
       <LayersControl.Overlay name={name} checked>
         <GeoJSON
           data={data}
           eventHandlers={{
-            click: styleChanged,
-            dblclick: resetStyledLayer,
+            click: handleOnClick,
+            // dblclick: resetStyledLayer,
           }}
           pointToLayer={(a, b) => {
             return point(a, b);
           }}
+          style={featureStyle}
         ></GeoJSON>
       </LayersControl.Overlay>
     </>
