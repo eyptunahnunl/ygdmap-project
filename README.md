@@ -86,3 +86,8 @@ It is designed to support the flexible and extensible nature of the project so t
 ### 5.1. Software Products View
 
 <img src="/Documents/location-analysis.png"/>
+
+<br>
+<br>
+
+<img src="/Documents/wms.png"/>
