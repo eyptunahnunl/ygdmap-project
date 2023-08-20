@@ -5,6 +5,6 @@ import com.tunadev.ygdmap.payload.MyPolygon;
 import com.tunadev.ygdmap.payload.OtherShape;
 
 public interface GeoJsonService {
-
+ // interface
     ResponseEntity<OtherShape> findShapesWithinPolygon(OtherShape otherShape, MyPolygon myPolygon) throws Exception;
 }
