@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GeoJSON, LayersControl } from "react-leaflet";
 import L from "leaflet";
 import LayersContext from "context/LayerContext";
@@ -7,9 +7,10 @@ import LocationAnalysisContext from "context/LocationAnalysisContext";
 function AddLayerGeoJson({ name, data, popup, color }) {
   const { setActiveFId, activeFId, setActiveLayerID } =
     useContext(LayersContext);
-  const { apiData } = useContext(LocationAnalysisContext);
+  const { apiData, setApiData } = useContext(
+    LocationAnalysisContext
+  );
 
-  console.log("apiDAta", apiData);
   const handleOnClick = event => {
     const activeLayerId = event.layer.feature.layerID;
     const uniqueId =
@@ -36,6 +37,21 @@ function AddLayerGeoJson({ name, data, popup, color }) {
     return L.circleMarker(latlng);
   }
 
+  const resetStyledLayer = e => {
+    e.target.resetStyle();
+  };
+
+  const intersectionDataStyle = feature => {
+    console.log("feature", feature);
+    if (apiData.includes(feature.properties.uniqueId)) {
+      return {
+        fillColor: "red",
+        color: "red",
+      };
+    }
+    setApiData();
+  };
+
   return (
     <>
       <LayersControl.Overlay name={name} checked>
@@ -43,12 +59,14 @@ function AddLayerGeoJson({ name, data, popup, color }) {
           data={data}
           eventHandlers={{
             click: handleOnClick,
-            // dblclick: resetStyledLayer,
+            dblclick: resetStyledLayer,
           }}
           pointToLayer={(a, b) => {
             return point(a, b);
           }}
-          style={featureStyle}
+          style={
+            apiData ? intersectionDataStyle : featureStyle
+          }
         ></GeoJSON>
       </LayersControl.Overlay>
     </>

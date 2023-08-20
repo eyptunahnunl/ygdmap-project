@@ -45,7 +45,11 @@ function LocationAnalysis() {
         );
 
         if (response.data.features.length > 0) {
-          setApiData(response.data);
+          const ids = response.data.features.map(
+            feature => feature.properties.uniqueId
+          );
+          console.log("some ids", ids);
+          setApiData(ids);
         } else {
           setNonIntersection(true);
         }
