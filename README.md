@@ -95,4 +95,4 @@ It is designed to support the flexible and extensible nature of the project so t
 ## MIT License
 
 Copyright (c) 2022 Eyup Tunahan Unal
-IstanbulAirQuality is free software and may be redistributed under the MIT-LICENSE.
+YGDMap-project is free software and may be redistributed under the MIT-LICENSE.
