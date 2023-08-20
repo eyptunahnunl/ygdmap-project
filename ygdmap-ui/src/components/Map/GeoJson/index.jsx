@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { GeoJSON, LayersControl } from "react-leaflet";
 import L from "leaflet";
 import LayersContext from "context/LayerContext";
+import LocationAnalysisContext from "context/LocationAnalysisContext";
 
 function AddLayerGeoJson({ name, data, popup, color }) {
   const { setActiveFId, activeFId, setActiveLayerID } =
     useContext(LayersContext);
+  const { apiData } = useContext(LocationAnalysisContext);
+
+  console.log("apiDAta", apiData);
   const handleOnClick = event => {
     const activeLayerId = event.layer.feature.layerID;
     const uniqueId =

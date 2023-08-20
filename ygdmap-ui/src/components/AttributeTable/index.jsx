@@ -13,6 +13,10 @@ function AttributeTable() {
   } = useContext(LayersContext);
   const [tableCol, setTableCol] = useState([]);
   const [tableRow, setTableRow] = useState([]);
+  const [visiblityCol, setVisiblityCol] = useState({
+    uniqueId: false,
+    F_ID: true,
+  });
 
   let layerPropertyNames = [];
 
@@ -33,6 +37,7 @@ function AttributeTable() {
         }
       );
 
+      console.log("row", rows);
       setTableRow(rows);
 
       Object.keys(
@@ -53,6 +58,7 @@ function AttributeTable() {
         },
         []
       );
+
       setTableCol(columns);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,6 +80,15 @@ function AttributeTable() {
 
   const zoomTodubleClick = event => {
     console.log("cel", event.id);
+
+    const filteredFeatures = layersData
+      .flatMap(entry => entry.data.features)
+      .filter(
+        feature => feature.properties.uniqueId === event.id
+      );
+
+    console.log("filtredData", filteredFeatures);
+
     // console.log(layersData[0].data.features.filter());
     // layersData.filter( data => data.feat )
   };
@@ -97,8 +112,12 @@ function AttributeTable() {
             checkboxSelection
             pageSizeOptions={[5, 10]}
             onRowSelectionModelChange={handleRowSelection}
+            columnVisibilityModel={visiblityCol}
+            onColumnOrderChange={e =>
+              console.log(e, "order chang")
+            }
             // onRowDoubleClick={zoomTodubleClick}
-            onCellClick={zoomTodubleClick}
+            onRowDoubleClick={zoomTodubleClick}
           />
         </div>
       ) : (

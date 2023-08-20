@@ -1,25 +1,33 @@
 import LayersContext from "context/LayerContext";
-import React, { useContext, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Button, Typography } from "@mui/material";
+import { Button, Modal, Typography } from "@mui/material";
 import axios from "axios";
+import LocationAnalysisContext from "context/LocationAnalysisContext";
+import {
+  CustomModal,
+  DropDown,
+  Header,
+} from "components/UI";
 function LocationAnalysis() {
   const { layersData } = useContext(LayersContext);
+  const { setApiData } = useContext(
+    LocationAnalysisContext
+  );
   const [poligon, setPoligon] = useState({});
   const [secondData, setSecondData] = useState({});
-  // const [serviceData, setServiceData] = useState();
 
-  const handleChangePoligon = event => {
-    setPoligon(event.target.value);
-  };
-
-  const handleChangeSecondData = event => {
-    setSecondData(event.target.value);
-  };
+  const [errorModalOpen, setErrorModal] = useState(false);
+  const [nonIntersection, setNonIntersection] =
+    useState(false);
 
   const serviceEntegration = async () => {
     if (
@@ -30,97 +38,51 @@ function LocationAnalysis() {
         points: secondData,
         polygon: poligon,
       };
-      console.log("serviceData", serviceData);
       try {
         const response = await axios.post(
           "http://localhost:8080/api/data",
           serviceData
         );
-        console.log(response);
+
+        if (response.data.features.length > 0) {
+          setApiData(response.data);
+        } else {
+          setNonIntersection(true);
+        }
       } catch (error) {
         console.error(
           "API isteği sırasında bir hata oluştu:",
           error
         );
+
+        setErrorModal(true);
       }
     }
   };
   return (
     <div className="absolute bottom-1/3 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
       <Box sx={{ minWidth: 120 }}>
-        <Typography
-          variant="h8"
-          component="div"
-          sx={{
-            flexGrow: 1,
-            padding: 1,
-            textAlign: "center",
-          }}
-        >
-          Location Analysis Tool
-        </Typography>
-        <FormControl fullWidth>
-          <InputLabel
-            id="demo-simple-select-label2"
-            className="mt-2"
-          >
-            Poligon Katman giriniz
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label2"
-            id="demo-simple-select2"
-            value={poligon}
-            onChange={handleChangePoligon}
-          >
-            <MenuItem value={poligon}>
-              Select Layer...
-            </MenuItem>
-
-            {layersData.length != 0 ? (
-              layersData.map((item, index) => {
-                return (
-                  <MenuItem key={index} value={item.data}>
-                    {item.name}
-                  </MenuItem>
-                );
-              })
-            ) : (
-              <div>katman yok</div>
-            )}
-          </Select>
-        </FormControl>
+        <Header text="Location Analysis Tool" />
+        <DropDown
+          onChange={event => setPoligon(event.target.value)}
+          value={poligon}
+          data={layersData}
+          text="Select Layer..."
+          label="Poligon Katman giriniz"
+        />
       </Box>
 
       <Box sx={{ minWidth: 120 }} className="mt-2">
-        <FormControl fullWidth>
-          <InputLabel
-            id="demo-simple-select-label"
-            className="mt-2"
-          >
-            ikinci katmanı seçiniz
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={secondData}
-            onChange={handleChangeSecondData}
-          >
-            <MenuItem value={secondData}>
-              Select Layer second...
-            </MenuItem>
-            {layersData.length != 0 ? (
-              layersData.map((item, key) => {
-                return (
-                  <MenuItem key={key} value={item.data}>
-                    {item.name}
-                  </MenuItem>
-                );
-              })
-            ) : (
-              <div>katman yok</div>
-            )}
-          </Select>
-        </FormControl>
+        <DropDown
+          onChange={event =>
+            setSecondData(event.target.value)
+          }
+          value={secondData}
+          data={layersData}
+          text="Select Second Layer..."
+          label="Point, line, poligon giriniz"
+        />
+
         <Button
           type="submit"
           variant="contained"
@@ -131,6 +93,25 @@ function LocationAnalysis() {
           Submit
         </Button>
       </Box>
+
+      {errorModalOpen && (
+        <CustomModal
+          open={errorModalOpen}
+          handleClose={() => setErrorModal(false)}
+          header={"API İsteğinde hata oluştu"}
+          text={
+            "Girdiğiniz veri türleri birincisi Poligon ikincisi Poligon, line veya Point Objelerinden oluşmalı "
+          }
+        />
+      )}
+      {nonIntersection && (
+        <CustomModal
+          open={nonIntersection}
+          handleClose={() => setNonIntersection(false)}
+          header="Girdiğiniz veriler kesişmedi"
+          text="verileriniz geometrik olarak aynı kesişim lokasyonunda değil"
+        />
+      )}
     </div>
   );
 }
