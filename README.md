@@ -1,7 +1,5 @@
 # YGDMap Project
 
-to inform
-
 It can be tested with the [example data](/data) under the project data folder. Go under document to access [project diagrams](/Documents/diagrams/).
 
 1. [Introduction](#intro)
