@@ -4,7 +4,7 @@ import L from "leaflet";
 import LayersContext from "context/LayerContext";
 import LocationAnalysisContext from "context/LocationAnalysisContext";
 
-function AddLayerGeoJson({ name, data, popup, color }) {
+function AddLayerGeoJson({ name, data }) {
   const { setActiveFId, activeFId, setActiveLayerID } =
     useContext(LayersContext);
   const { apiData, setApiData } = useContext(

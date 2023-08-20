@@ -1,3 +1,6 @@
+import AttributeTable from "components/AttributeTable";
+import DataEntry from "components/DataEntry";
+import LocationAnalysis from "components/LocationAnalysis";
 import { Button } from "components/UI";
 import UIControlContext from "context/UIControl";
 import { useContext } from "react";
@@ -39,6 +42,10 @@ function ToolBar() {
         />
         {/* <UploadData /> */}
       </div>
+
+      {dataEntry && <DataEntry />}
+      {locationAnalysis && <LocationAnalysis />}
+      {attributeTable && <AttributeTable />}
     </>
   );
 }

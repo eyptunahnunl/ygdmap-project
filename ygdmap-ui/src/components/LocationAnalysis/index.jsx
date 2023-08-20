@@ -27,8 +27,8 @@ function LocationAnalysis() {
       Object.keys(secondData).length > 0
     ) {
       const serviceData = {
-        points: secondData,
         polygon: poligon,
+        otherShape: secondData,
       };
       try {
         const response = await axios.post(
@@ -56,7 +56,7 @@ function LocationAnalysis() {
     }
   };
   return (
-    <div className="absolute bottom-1/3 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
+    <div className="absolute bottom-96 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
       <Box sx={{ minWidth: 120 }}>
         <Header text="Location Analysis Tool" />
         <DropDown
