@@ -1,0 +1,13 @@
+package com.tunadev.ygdmap;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class YgdmapApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
