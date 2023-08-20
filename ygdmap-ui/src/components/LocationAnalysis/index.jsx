@@ -1,15 +1,7 @@
 import LayersContext from "context/LayerContext";
-import React, {
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { Button, Modal, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import axios from "axios";
 import LocationAnalysisContext from "context/LocationAnalysisContext";
 import {
@@ -48,7 +40,7 @@ function LocationAnalysis() {
           const ids = response.data.features.map(
             feature => feature.properties.uniqueId
           );
-          console.log("some ids", ids);
+
           setApiData(ids);
         } else {
           setNonIntersection(true);

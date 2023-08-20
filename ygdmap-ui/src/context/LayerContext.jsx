@@ -8,7 +8,6 @@ export const LayersProvider = ({ children }) => {
   const [activeFId, setActiveFId] = useState([]);
   const [activeLayerID, setActiveLayerID] = useState();
   const [rasterLayer, setRasterLayer] = useState();
-  const [activeData, setActiveData] = useState([]);
 
   const [clearStyle, setClearStyle] = useState();
 

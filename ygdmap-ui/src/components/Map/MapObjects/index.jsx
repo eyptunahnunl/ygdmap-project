@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import { ContainerMap, MapTools } from "..";
 import { ToolBar } from "components/Tools";
 

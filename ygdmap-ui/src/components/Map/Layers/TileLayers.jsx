@@ -1,5 +1,5 @@
 import LayersContext from "context/LayerContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   LayersControl,
   TileLayer,
@@ -7,8 +7,7 @@ import {
 } from "react-leaflet";
 
 function TileLayers() {
-  const { wmsLayer, setWmsLayer, addWmsLayer } =
-    useContext(LayersContext);
+  const { wmsLayer } = useContext(LayersContext);
 
   return (
     <>

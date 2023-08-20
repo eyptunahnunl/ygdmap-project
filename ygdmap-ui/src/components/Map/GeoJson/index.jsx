@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { GeoJSON, LayersControl } from "react-leaflet";
 import L from "leaflet";
 import LayersContext from "context/LayerContext";

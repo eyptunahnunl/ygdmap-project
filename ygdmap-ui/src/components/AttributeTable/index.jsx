@@ -13,7 +13,7 @@ function AttributeTable() {
   } = useContext(LayersContext);
   const [tableCol, setTableCol] = useState([]);
   const [tableRow, setTableRow] = useState([]);
-  const [visiblityCol, setVisiblityCol] = useState({
+  const [visiblityCol] = useState({
     uniqueId: false,
     F_ID: true,
   });
@@ -78,20 +78,6 @@ function AttributeTable() {
     setActiveFId(selection);
   };
 
-  const zoomTodubleClick = event => {
-    console.log("cel", event.id);
-
-    const filteredFeatures = layersData
-      .flatMap(entry => entry.data.features)
-      .filter(
-        feature => feature.properties.uniqueId === event.id
-      );
-
-    console.log("filtredData", filteredFeatures);
-
-    // console.log(layersData[0].data.features.filter());
-    // layersData.filter( data => data.feat )
-  };
   return (
     <div className="absolute bottom-0  z-20 w-full bg-white p-2 ">
       {layersData.length !== 0 ? (
@@ -116,8 +102,6 @@ function AttributeTable() {
             onColumnOrderChange={e =>
               console.log(e, "order chang")
             }
-            // onRowDoubleClick={zoomTodubleClick}
-            onRowDoubleClick={zoomTodubleClick}
           />
         </div>
       ) : (
