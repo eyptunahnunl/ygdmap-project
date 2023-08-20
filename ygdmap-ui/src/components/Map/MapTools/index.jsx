@@ -35,7 +35,6 @@ function MapTools() {
               key={index}
               name={item.name}
               data={item.data}
-              popup={item.data.features}
               color={featureColors}
             />
           );

@@ -56,7 +56,7 @@ function LocationAnalysis() {
     }
   };
   return (
-    <div className="absolute bottom-96 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
+    <div className="absolute bottom-1/2 z-20 w-72 h-56 flex-col bg-white m-3 p-2">
       <Box sx={{ minWidth: 120 }}>
         <Header text="Location Analysis Tool" />
         <DropDown

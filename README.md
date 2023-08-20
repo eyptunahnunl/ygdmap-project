@@ -76,6 +76,13 @@ Abbreviations:
 
 ## 5. General System Structure
 
+Frontend is developed using the React and Leaflet libraries and provides the tools users need to load data, visualize it on a map, and perform basic analysis.
+
+The backend is built with the Java Spring Boot framework and manages the data uploaded by the users, performs the analysis operations.
+
+It is designed to support the flexible and extensible nature of the project so that new data formats or analysis tools can be easily integrated.
 <a name="section51"></a>
 
 ### 5.1. Software Products View
+
+<img src="/Documents/location-analysis.png"/>
