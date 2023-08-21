@@ -1,6 +1,7 @@
 # YGDMap Project
 
-It can be tested with the [example data](/data) under the project data folder. Go under document to access [project diagrams](/Documents/diagrams/).
+It can be tested with the [example data](/data) under the project data folder.
+Go under document to access [project diagrams](/documents/diagrams/).
 
 ## Table of Content
 
@@ -91,12 +92,15 @@ It is designed to support the flexible and extensible nature of the project so t
 
 ### 5.1. Software Products View
 
-<img src="/Documents/location-analysis.png"/>
+<img src="/documents/location-analysis.png"/>
 
 <br>
 <br>
 
-<img src="/Documents/wms.png"/>
+<img src="/documents/wms.png"/>
+
+<br>
+<img src="/documents/raster.png>
 
 ## MIT License
 
