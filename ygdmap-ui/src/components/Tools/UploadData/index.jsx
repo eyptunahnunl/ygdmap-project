@@ -49,6 +49,7 @@ function UploadData() {
   }
 
   function jsonData(data) {
+ 
     setLayerID(layerID + 1);
     const name = data[1];
     const json =
@@ -56,6 +57,9 @@ function UploadData() {
         ? JSON.parse(makeGeometri(data[0]))
         : data[0];
 
+    if (json.feature === undefined) {
+      return;
+    }
     json.features.forEach((feature, index) => {
       feature.properties["F_ID"] = index + 1;
       feature.properties["uniqueId"] = uuidv4();
