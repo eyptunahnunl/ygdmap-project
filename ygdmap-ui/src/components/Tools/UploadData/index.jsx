@@ -57,7 +57,7 @@ function UploadData() {
         ? JSON.parse(makeGeometri(data[0]))
         : data[0];
 
-    if (json.feature === undefined) {
+    if (json.features === undefined) {
       return;
     }
     json.features.forEach((feature, index) => {
