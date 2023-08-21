@@ -31,8 +31,7 @@ YGDMap project is a GIS project. It is a solution that facilitates geometric dat
 <a name="section21"></a>
 
 ###  2.1. Purpose
-
-Bu projenin amacı, farklı geometrik veri formatlarını kullanıcıların yükleyebileceği ve bu verileri interaktif harita üzerinde görüntüleyerek temel coğrafi analizler yapabileceği bir platform sunmaktır. Kullanıcılar, coğrafi verileri daha iyi anlamak ve değerli içgörüler elde etmek için bu platformu kullanabilirler.
+The aim of this project is to provide a platform where users can upload different geometric data formats and perform basic geographic analysis by displaying this data on an interactive map. Users can use this platform to better understand and evaluate geographic data.
 
 <a name="section22"></a>
 
@@ -92,17 +91,17 @@ It is designed to support the flexible and extensible nature of the project so t
 
 ### 5.1. Software Products View
 
-<img src="/documents/location-analysis.png"/>
+<img src="/Documents/location-analysis.png"/>
 
 <br>
 <br>
 
-<img src="/documents/wms.png"/>
+<img src="/Documents/wms.png"/>
 
 <br>
 <br>
 
-<img src="/documents/raster.png/>
+<img src="/Documents/raster.png/>
 
 ## MIT License
 
