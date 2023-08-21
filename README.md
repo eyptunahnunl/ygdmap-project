@@ -102,7 +102,7 @@ It is designed to support the flexible and extensible nature of the project so t
 <br>
 <br>
 
-<img src="/documents/raster.png>
+<img src="/documents/raster.png/>
 
 ## MIT License
 
