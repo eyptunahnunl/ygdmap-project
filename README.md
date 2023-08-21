@@ -1,7 +1,7 @@
 # YGDMap Project
 
 It can be tested with the [example data](/data) under the project data folder.
-Go under document to access [project diagrams](/documents/diagrams/).
+Go under document to access [project diagrams and architecture design document in Turkish](/documents/).
 
 ## Table of Content
 
@@ -100,6 +100,8 @@ It is designed to support the flexible and extensible nature of the project so t
 <img src="/documents/wms.png"/>
 
 <br>
+<br>
+
 <img src="/documents/raster.png>
 
 ## MIT License
