@@ -101,7 +101,7 @@ It is designed to support the flexible and extensible nature of the project so t
 <br>
 <br>
 
-<img src="/Documents/raster.png/>
+<img src="/Documents/raster.png"/>
 
 ## MIT License
 
