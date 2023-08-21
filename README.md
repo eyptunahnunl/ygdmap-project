@@ -1,7 +1,7 @@
 # YGDMap Project
 
 It can be tested with the [example data](/data) under the project data folder.
-Go under document to access [project diagrams and architecture design document in Turkish](/documents/).
+Go under document to access [project diagrams and architecture design document in Turkish](/Documents/).
 
 ## Table of Content
 
