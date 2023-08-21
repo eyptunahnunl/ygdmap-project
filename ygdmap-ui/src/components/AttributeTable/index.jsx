@@ -37,7 +37,6 @@ function AttributeTable() {
         }
       );
 
-      console.log("row", rows);
       setTableRow(rows);
 
       Object.keys(
@@ -99,9 +98,6 @@ function AttributeTable() {
             pageSizeOptions={[5, 10]}
             onRowSelectionModelChange={handleRowSelection}
             columnVisibilityModel={visiblityCol}
-            onColumnOrderChange={e =>
-              console.log(e, "order chang")
-            }
           />
         </div>
       ) : (

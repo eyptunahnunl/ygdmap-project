@@ -42,7 +42,6 @@ function AddLayerGeoJson({ name, data }) {
   };
 
   const intersectionDataStyle = feature => {
-    console.log("feature", feature);
     if (apiData.includes(feature.properties.uniqueId)) {
       return {
         fillColor: "red",

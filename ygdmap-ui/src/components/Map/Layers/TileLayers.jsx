@@ -27,7 +27,6 @@ function TileLayers() {
         />
       </LayersControl.BaseLayer>
       {wmsLayer?.map((item, index) => {
-        console.table(item.name, item.url, item.layer);
         return (
           <LayersControl.BaseLayer
             checked

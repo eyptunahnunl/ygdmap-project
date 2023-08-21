@@ -8,7 +8,6 @@ function GeotiffLayer() {
   const { rasterLayer } = useContext(LayersContext);
   const map = useMap();
   useEffect(() => {
-    console.log(rasterLayer, "ssf");
     if (rasterLayer !== undefined) {
       var reader = new FileReader();
       reader.readAsArrayBuffer(rasterLayer);
